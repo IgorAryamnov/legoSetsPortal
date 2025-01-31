@@ -33,7 +33,7 @@ export default function FavoritePage() {
           data={{ data: favoriteSlice[logSlice.user], user: logSlice.user }}
         />
       ) : (
-        <p style={{ color: "#14a76c" }}>
+        <p style={{ color: "var(--green)" }}>
           Увы, вы ничего не добавили в избранное!
         </p>
       )}

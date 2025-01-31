@@ -26,13 +26,13 @@ const StyledInput = styled(Input)`
   &:hover,
   &:focus-visible,
   &:focus-within {
-    border: 1px solid #14a76c;
+    border: 1px solid var(--green);
     box-shadow: none;
   }
 `;
 const StyledButton = styled.button`
   width: 200px;
-  background-color: #ff652f;
+  background-color: var(--orange);
   font-size: 14px;
   height: 32px;
   border-radius: 6px;
@@ -44,7 +44,7 @@ const StyledButton = styled.button`
   &:hover,
   &:focus-visible {
     cursor: pointer;
-    border: 1px solid #14a76c;
+    border: 1px solid var(--green);
   }
 `;
 const SwitchForm = styled(Link)`
@@ -56,7 +56,7 @@ const SwitchForm = styled(Link)`
 
   &:hover,
   &:focus-visible {
-    color: #747474;
+    color: var(--grey);
     cursor: pointer;
   }
 `;

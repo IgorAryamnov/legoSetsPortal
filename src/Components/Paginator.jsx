@@ -10,7 +10,7 @@ const PageCounter = styled.p`
   margin: 0px;
   font-size: 20px;
   margin-bottom: 4px;
-  color: #ff652f;
+  color: var(--orange);
 `;
 const StyledButton = styled.button`
   background: none;
@@ -20,7 +20,7 @@ const StyledButton = styled.button`
   outline: none;
 
   .anticon {
-    color: #14a76c;
+    color: var(--green);
     &.anticon svg {
       width: 20px;
       height: 20px;
@@ -32,7 +32,7 @@ const StyledButton = styled.button`
     cursor: pointer;
 
     .anticon {
-      color: #747474;
+      color: var(--grey);
     }
   }
 `;

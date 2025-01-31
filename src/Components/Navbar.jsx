@@ -5,7 +5,7 @@ import styled from "styled-components";
 import logo from "../utils/logo.png";
 
 const StyledHeader = styled.header`
-  border: 2px solid #14a76c;
+  border: 2px solid var(--green);
   border-left-width: 0px;
   border-right-width: 0px;
   margin-top: 50px;
@@ -19,7 +19,7 @@ const StyledLink = styled(Link)`
   color: black;
   width: 150px;
   font-size: 20px;
-  background: #ff652f;
+  background: var(--orange);
   padding: 10px;
   outline: none;
   -webkit-transform: skew(-20deg);
@@ -28,12 +28,12 @@ const StyledLink = styled(Link)`
   text-align: center;
   box-sizing: border-box;
   margin: 0px 10px 0px 0px;
-  border: 2px solid #ff652f;
+  border: 2px solid var(--orange);
 
   &:hover,
   &:focus-visible {
     cursor: pointer;
-    border: 2px solid #14a76c;
+    border: 2px solid var(--green);
   }
 `;
 const LinksContainer = styled.div`
@@ -51,7 +51,7 @@ const UserLogOutButton = styled.button`
   color: black;
   width: 150px;
   font-size: 20px;
-  background: #ff652f;
+  background: var(--orange);
   padding: 10px;
   outline: none;
   -webkit-transform: skew(-20deg);
@@ -65,7 +65,7 @@ const UserLogOutButton = styled.button`
   &:hover,
   &:focus-visible {
     cursor: pointer;
-    border: 2px solid #14a76c;
+    border: 2px solid var(--green);
   }
 `;
 

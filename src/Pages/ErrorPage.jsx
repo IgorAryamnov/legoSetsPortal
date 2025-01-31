@@ -12,8 +12,8 @@ const Container = styled.div`
 export function ErrorPage() {
   return (
     <Container>
-      <h1 style={{ color: "#14a76c" }}>Ой!</h1>
-      <p style={{ color: "#14a76c" }}>Что-то пошло не так...</p>
+      <h1 style={{ color: "var(--green)" }}>Ой!</h1>
+      <p style={{ color: "var(--green)" }}>Что-то пошло не так...</p>
     </Container>
   );
 }

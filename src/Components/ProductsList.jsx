@@ -18,7 +18,7 @@ const Container = styled.div`
   align-items: center;
 `;
 const ProductsCount = styled.p`
-  color: #14a76c;
+  color: var(--green);
   margin-top: 0px;
 `;
 const StyledLink = styled(Link)`

@@ -4,7 +4,11 @@ import { useEffect } from "react";
 import { addToFavoriteProducts } from "../features/favoriteFullInformation";
 import { FavoriteProduct } from "./FavoriteProduct";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
+const Message = styled.p`
+  color: var(--green);
+`;
 export function FavoriteProductSearch({ id, user }) {
   const dispatch = useDispatch();
 
@@ -42,9 +46,9 @@ export function FavoriteProductSearch({ id, user }) {
   return (
     <>
       {error ? (
-        <p style={{ color: "#14a76c" }}>Oh no, there was an error</p>
+        <Message>Oh no, there was an error</Message>
       ) : isFetching ? (
-        <p style={{ color: "#14a76c" }}>Loading...</p>
+        <Message>Loading...</Message>
       ) : (
         <FavoriteProduct
           data={{ user: user, product: data || dataFromRedux }}

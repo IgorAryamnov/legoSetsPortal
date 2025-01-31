@@ -11,7 +11,7 @@ const Container = styled.div`
 export function SuspenseFallback() {
   return (
     <Container>
-      <Mosaic color="#14a76c" size="medium" text="" textColor="" />
+      <Mosaic color="var(--green)" size="medium" text="" textColor="" />
     </Container>
   );
 }

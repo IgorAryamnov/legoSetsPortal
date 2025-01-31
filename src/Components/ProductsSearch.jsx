@@ -24,9 +24,9 @@ export function ProductsSearch({ url }) {
   return (
     <div>
       {error ? (
-        <p style={{ color: "#14a76c" }}>Oh no, there was an error</p>
+        <p style={{ color: "var(--green)" }}>Oh no, there was an error</p>
       ) : isFetching ? (
-        <p style={{ color: "#14a76c" }}>Loading...</p>
+        <p style={{ color: "var(--green)" }}>Loading...</p>
       ) : (
         <>
           <ProductsList />

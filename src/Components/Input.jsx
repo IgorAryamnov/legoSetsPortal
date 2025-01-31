@@ -13,7 +13,7 @@ const StyledInput = styled.input`
 
   &:hover,
   &:focus-visible {
-    border: 1px solid #14a76c;
+    border: 1px solid var(--green);
   }
 `;
 

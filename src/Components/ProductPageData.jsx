@@ -22,7 +22,7 @@ const ProductDescriptionContainer = styled.div`
     width: 100%;
   }
   &.container {
-    border: 2px solid #14a76c;
+    border: 2px solid var(--green);
     border-radius: 30px;
     margin: 0px 20px 0px 20px;
   }
@@ -30,14 +30,14 @@ const ProductDescriptionContainer = styled.div`
 const Divider = styled.div`
   width: 90%;
   height: 2px;
-  background-color: #14a76c;
+  background-color: var(--green);
   border-radius: 2px;
 `;
 const StyledButton = styled.button`
   font-size: 30px;
-  border: 1px solid #ff652f;
+  border: 1px solid var(--orange);
   outline: none;
-  background-color: #ff652f;
+  background-color: var(--orange);
   margin-top: 20px;
   padding: 10px;
   border-radius: 20px;
@@ -45,9 +45,16 @@ const StyledButton = styled.button`
   &:hover,
   &:focus-visible {
     cursor: pointer;
-    border: 1px solid #14a76c;
-    color: #747474;
+    border: 1px solid var(--green);
+    color: var(--grey);
   }
+`;
+const StyledDescription = styled.p`
+  color: var(--orange);
+`;
+const DescriptionTitle = styled.p`
+  color: var(--green);
+  margin-bottom: 0px;
 `;
 
 export function ProductPageData({ data, inFavorite, loginSlice }) {
@@ -71,25 +78,23 @@ export function ProductPageData({ data, inFavorite, loginSlice }) {
         <h1 style={{ color: "#ffe400" }}>Информация о наборе</h1>
         <div className="product-name">
           <Divider />
-          <p style={{ color: "#14a76c", marginBottom: 0 }}>Артикул:</p>
-          <p style={{ color: "#ff652f" }}>{data.set_num}</p>
+          <DescriptionTitle>Артикул:</DescriptionTitle>
+          <StyledDescription>{data.set_num}</StyledDescription>
         </div>
         <div className="product-name">
           <Divider />
-          <p style={{ color: "#14a76c", marginBottom: 0 }}>Название набора:</p>
-          <p style={{ color: "#ff652f" }}>{data.name}</p>
+          <DescriptionTitle>Название набора:</DescriptionTitle>
+          <StyledDescription>{data.name}</StyledDescription>
         </div>
         <div className="product-name">
           <Divider />
-          <p style={{ color: "#14a76c", marginBottom: 0 }}>
-            Количество деталей в наборе:
-          </p>
-          <p style={{ color: "#ff652f" }}>{data.num_parts}</p>
+          <DescriptionTitle>Количество деталей в наборе:</DescriptionTitle>
+          <StyledDescription>{data.num_parts}</StyledDescription>
         </div>
         <div className="product-name">
           <Divider />
-          <p style={{ color: "#14a76c", marginBottom: 0 }}>Год выпуска:</p>
-          <p style={{ color: "#ff652f" }}>{data.year}</p>
+          <DescriptionTitle>Год выпуска:</DescriptionTitle>
+          <StyledDescription>{data.year}</StyledDescription>
           <Divider />
         </div>
         {loginSlice.loggedIn ? (

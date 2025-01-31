@@ -15,13 +15,13 @@ const MessageContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  border: 2px solid #14a76c;
+  border: 2px solid var(--green);
 `;
 const MessageTitle = styled.h1`
   margin: 0;
   width: 100%;
   text-align: center;
-  background: #14a76c;
+  background: var(--green);
   border-radius: 16px 16px 0px 0px;
 `;
 const StyledLink = styled(Link)`
@@ -31,12 +31,12 @@ const StyledLink = styled(Link)`
   outline: none;
   padding: 5px 0px 10px 0px;
   border-radius: 0px 0px 16px 16px;
-  background: #ff652f;
+  background: var(--orange);
   color: black;
 
   &:hover,
   &:focus-visible {
-    color: #747474;
+    color: var(--grey);
     cursor: pointer;
   }
 `;
