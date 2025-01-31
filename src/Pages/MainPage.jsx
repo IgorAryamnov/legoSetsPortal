@@ -1,73 +1,73 @@
-import { Button } from "antd";
-import { useState } from "react";
-import { TestApi } from "../Components/TestApi";
+import { createContext, useState } from "react";
+import { ProductsSearch } from "../Components/ProductsSearch";
 import { url } from "../utils/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { decreasePage, increasePage, resetPage } from "../features/pageCounter";
+import { useDispatch } from "react-redux";
+import { resetPage } from "../features/pageCounter";
 import { Input } from "../Components";
 import { resetResponse } from "../features/serverResponse";
+import styled from "styled-components";
 
-export function MainPage() {
+const StyledMain = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+`;
+const InputContainer = styled.div`
+  display: flex;
+  margin: 30px 0px 20px 0px;
+`;
+const StyledButton = styled.button`
+  outline: none;
+  border: 1px solid #ff652f;
+  background: #ff652f;
+  height: 32px;
+  box-sizing: border-box;
+  border-radius: 0px 6px 6px 0px;
+
+  &:hover,
+  &:focus-visible {
+    cursor: pointer;
+    border: 1px solid #14a76c;
+    box-shadow: none;
+  }
+`;
+
+export const UrlSetContext = createContext();
+
+export default function MainPage() {
   const [currentURL, setCurrentURL] = useState("");
-  const [errorMessage, setErrorMessage] = useState(false);
-  const [firstInput, setFirstInput] = useState({
-    value: "",
-    validation: false,
-  });
-  const [secondInput, setSecondInput] = useState({
-    value: "",
-    validation: false,
-  });
-  const pageSlice = useSelector((state) => state.page.page);
-  const responseSlice = useSelector((state) => state.response.responses);
+  const [mainInput, setMainInput] = useState("");
+
   const dispatch = useDispatch();
 
   function HandleClick() {
-    if (
-      firstInput.value !== "" &&
-      firstInput.validation !== false &&
-      secondInput.value !== "" &&
-      secondInput.validation !== false
-    ) {
-      setCurrentURL(
-        url.href + ` AND element_set=${firstInput.value},${secondInput.value}`
-      );
-      setErrorMessage(false);
+    if (mainInput !== "") {
+      let newUrl = new URL(url);
+      newUrl.searchParams.set("search", mainInput);
+
+      setCurrentURL(newUrl.toString());
       dispatch(resetPage());
       dispatch(resetResponse());
     } else {
-      setErrorMessage(true);
+      setCurrentURL(url);
+      dispatch(resetPage());
+      dispatch(resetResponse());
     }
-  }
-
-  function ButtonDecreasedClick() {
-    if (pageSlice === 1) {
-      return;
-    }
-    dispatch(decreasePage());
-  }
-
-  function ButtonIncreasedClick() {
-    let newUrl = responseSlice[pageSlice].links.next;
-    if (newUrl === null) {
-      return;
-    }
-    setCurrentURL(newUrl);
-    dispatch(increasePage());
   }
 
   return (
-    <div>
-      <Input value={firstInput} changeValue={setFirstInput} /> +{" "}
-      <Input value={secondInput} changeValue={setSecondInput} />
-      <Button onClick={HandleClick}>Кликни</Button>
-      {errorMessage ? <p>Введите данные корректно!</p> : null}
-      <TestApi url={currentURL} />
-      <div style={{ display: "flex" }}>
-        <Button onClick={() => ButtonDecreasedClick()}>Уменьшить</Button>
-        {pageSlice}
-        <Button onClick={() => ButtonIncreasedClick()}>Увеличить</Button>
-      </div>
-    </div>
+    <UrlSetContext.Provider value={setCurrentURL}>
+      <StyledMain>
+        <InputContainer>
+          <Input value={mainInput} changeValue={setMainInput} />
+          <StyledButton onClick={HandleClick}>Поиск</StyledButton>
+        </InputContainer>
+        <ProductsSearch url={currentURL} setUrl={setCurrentURL} />
+      </StyledMain>
+    </UrlSetContext.Provider>
   );
 }

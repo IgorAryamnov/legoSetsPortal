@@ -1,29 +1,38 @@
-import { useState } from "react";
-import { elements } from "../utils/constants";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const StyledInput = styled.input`
+  outline: none;
+  border-radius: 6px 0px 0px 6px;
+  height: 32px;
+  padding: 0px;
+  border: 0px;
+  box-sizing: border-box;
+  border: 1px solid white;
+  font-size: 20px;
+
+  &:hover,
+  &:focus-visible {
+    border: 1px solid #14a76c;
+  }
+`;
 
 export function Input({ value, changeValue }) {
-  const [validation, setValidation] = useState(true);
-
   function HandleChange(e) {
-    let currentValue = e.target.value;
-    if (elements.indexOf(currentValue) === -1) {
-      setValidation(false);
-      changeValue({ value: e.target.value, validation: false });
-    } else {
-      setValidation(true);
-      changeValue({ value: e.target.value, validation: true });
-    }
+    changeValue(e.target.value);
   }
 
   return (
-    <div>
-      <input
-        value={value.value}
-        onChange={(e) => {
-          HandleChange(e);
-        }}
-      />
-      {validation ? null : <p>Такого элемента нет</p>}
-    </div>
+    <StyledInput
+      value={value.value}
+      onChange={(e) => {
+        HandleChange(e);
+      }}
+    />
   );
 }
+
+Input.propTypes = {
+  value: PropTypes.string,
+  changeValue: PropTypes.func,
+};

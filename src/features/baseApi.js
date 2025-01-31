@@ -1,23 +1,26 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { headers } from "../utils/constants";
 
 export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:3001/proxy",
   }),
   endpoints: (builder) => ({
-    getStructures: builder.query({
+    getProducts: builder.query({
       query: (url) => ({
-        method: "POST",
-        headers: {
-          accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          href: url,
-        }),
+        url: url,
+        method: "GET",
+        headers: headers,
+      }),
+    }),
+    getFavoriteProduct: builder.query({
+      query: (url) => ({
+        url: url,
+        method: "GET",
+        headers: headers,
       }),
     }),
   }),
 });
 
-export const { useGetStructuresQuery } = baseApi;
+export const { useGetProductsQuery, useGetFavoriteProductQuery } = baseApi;
