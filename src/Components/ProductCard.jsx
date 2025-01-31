@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 const StyledCard = styled(Card)`
   width: 200px;
-  background: #272727;
-  border: 2px solid #14a76c;
+  background: var(--black);
+  border: 2px solid var(--green);
   box-sizing: content-box;
 
   .ant-card-meta-detail {
@@ -14,10 +14,10 @@ const StyledCard = styled(Card)`
     justify-content: center;
   }
   .ant-card-body {
-    border-top: 2px solid #14a76c;
+    border-top: 2px solid var(--green);
   }
   .ant-card-meta-title {
-    color: #ff652f;
+    color: var(--orange);
   }
 `;
 

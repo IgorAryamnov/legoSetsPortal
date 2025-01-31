@@ -24,7 +24,7 @@ const FormWithOutLogo = styled.div`
   flex-direction: column;
 
   border-radius: 20px;
-  border: 2px solid #14a76c;
+  border: 2px solid var(--green);
 
   h1 {
     margin-top: 0px;
@@ -36,7 +36,7 @@ const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #14a76c;
+  background: var(--green);
   border-radius: 15px 15px 0px 0px;
 `;
 

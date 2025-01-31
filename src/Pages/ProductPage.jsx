@@ -56,11 +56,15 @@ export default function ProductPage() {
   return (
     <>
       {error ? (
-        <p style={{ color: "#14a76c", textAlign: "center", marginTop: 20 }}>
+        <p
+          style={{ color: "var(--green)", textAlign: "center", marginTop: 20 }}
+        >
           Oh no, there was an error
         </p>
       ) : isFetching ? (
-        <p style={{ color: "#14a76c", textAlign: "center", marginTop: 20 }}>
+        <p
+          style={{ color: "var(--green)", textAlign: "center", marginTop: 20 }}
+        >
           Loading...
         </p>
       ) : (

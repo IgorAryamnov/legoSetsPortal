@@ -14,8 +14,8 @@ export default function NotFoundPage() {
   return (
     <Container>
       <LogoWithLink />
-      <h1 style={{ color: "#14a76c" }}>Увы!</h1>
-      <p style={{ color: "#14a76c" }}>Здесь ничего нет: ошибка 404!</p>
+      <h1 style={{ color: "var(--green)" }}>Увы!</h1>
+      <p style={{ color: "var(--green)" }}>Здесь ничего нет: ошибка 404!</p>
     </Container>
   );
 }

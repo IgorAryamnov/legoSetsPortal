@@ -22,8 +22,8 @@ const InputContainer = styled.div`
 `;
 const StyledButton = styled.button`
   outline: none;
-  border: 1px solid #ff652f;
-  background: #ff652f;
+  border: 1px solid var(--orange);
+  background: var(--orange);
   height: 32px;
   box-sizing: border-box;
   border-radius: 0px 6px 6px 0px;
@@ -31,7 +31,7 @@ const StyledButton = styled.button`
   &:hover,
   &:focus-visible {
     cursor: pointer;
-    border: 1px solid #14a76c;
+    border: 1px solid var(--green);
     box-shadow: none;
   }
 `;

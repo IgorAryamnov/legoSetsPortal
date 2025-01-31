@@ -2,23 +2,23 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { deleteFromFavorite } from "../features/favoriteStore";
 import { deleteFromFavoriteProducts } from "../features/favoriteFullInformation";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid #14a76c;
+  border: 2px solid var(--green);
   border-radius: 30px;
   width: 100%;
   margin-bottom: 20px;
 `;
 const StyledButton = styled.button`
   margin-right: 10px;
-  border: 1px solid #ff652f;
+  border: 1px solid var(--orange);
   outline: none;
-  background-color: #ff652f;
+  background-color: var(--orange);
   font-size: 20px;
   padding: 10px;
   border-radius: 20px;
@@ -26,8 +26,8 @@ const StyledButton = styled.button`
   &:hover,
   &:focus-visible {
     cursor: pointer;
-    border: 1px solid #14a76c;
-    color: #747474;
+    border: 1px solid var(--green);
+    color: var(--grey);
   }
 `;
 const ProductName = styled(Link)`
@@ -37,7 +37,7 @@ const ProductName = styled(Link)`
   &:hover,
   &:focus-visible {
     cursor: pointer;
-    color: #747474;
+    color: var(--grey);
   }
 `;
 
