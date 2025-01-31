@@ -1,23 +1,84 @@
-import { Button, Form, Input } from "antd";
+import { Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
+import { useDebounce } from "../hooks/useDebounce";
 
-export function RegistrationForm({ changeForm, succ }) {
+const StyledForm = styled(Form)`
+  width: 350px;
+  padding: 20px;
+
+  .submit-button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+  }
+`;
+const StyledInput = styled(Input)`
+  outline: none;
+
+  &:hover,
+  &:focus-visible,
+  &:focus-within {
+    border: 1px solid #14a76c;
+    box-shadow: none;
+  }
+`;
+const StyledButton = styled.button`
+  width: 200px;
+  background-color: #ff652f;
+  font-size: 14px;
+  height: 32px;
+  border-radius: 6px;
+  padding: 0px;
+  border: none;
+  outline: none;
+
+  &:hover,
+  &:focus-visible {
+    cursor: pointer;
+    border: 1px solid #14a76c;
+  }
+`;
+
+export function RegistrationForm({ succ }) {
+  const [usernameInput, setUsernameInput] = useState("");
+  const debouncedInput = useDebounce(usernameInput, 500);
+  const [validator, setValidator] = useState(false);
+
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    if (debouncedInput) {
+      let users = JSON.parse(localStorage.getItem("users"));
+      if (users[debouncedInput]) {
+        setValidator(true);
+      } else {
+        setValidator(false);
+      }
+    } else {
+      setValidator(false);
+    }
+  }, [debouncedInput]);
+
+  useEffect(() => {
+    if (debouncedInput) {
+      form.validateFields(["username"]);
+    }
+  }, [validator]);
+
   const onFinish = (values) => {
     let users = JSON.parse(localStorage.getItem("users"));
     users[values.username] = values.password;
     localStorage.setItem("users", JSON.stringify(users));
-    console.log(values);
+
     succ(true);
   };
 
   return (
-    <Form
-      name="login"
-      style={{
-        maxWidth: 360,
-      }}
-      onFinish={onFinish}
-    >
+    <StyledForm name="login" onFinish={onFinish} form={form}>
       <Form.Item
         name="username"
         rules={[
@@ -28,14 +89,12 @@ export function RegistrationForm({ changeForm, succ }) {
           () => ({
             validator(_, value) {
               if (!value || value.length > 4) {
-                let users = JSON.parse(localStorage.getItem("users"));
-                console.log(users);
-                if (!users[value]) {
-                  return Promise.resolve();
+                if (validator) {
+                  return Promise.reject(
+                    new Error("Данное имя пользователя уже используется!")
+                  );
                 }
-                return Promise.reject(
-                  new Error("Данное имя пользователя уже используется!")
-                );
+                return Promise.resolve();
               } else {
                 return Promise.reject(
                   new Error("Имя пользователя слишком короткое!")
@@ -45,7 +104,11 @@ export function RegistrationForm({ changeForm, succ }) {
           }),
         ]}
       >
-        <Input prefix={<UserOutlined />} placeholder="Логин" />
+        <StyledInput
+          prefix={<UserOutlined />}
+          placeholder="Логин"
+          onChange={(e) => setUsernameInput(e.target.value)}
+        />
       </Form.Item>
       <Form.Item
         name="password"
@@ -64,7 +127,11 @@ export function RegistrationForm({ changeForm, succ }) {
           }),
         ]}
       >
-        <Input prefix={<LockOutlined />} type="password" placeholder="Пароль" />
+        <StyledInput
+          prefix={<LockOutlined />}
+          type="password"
+          placeholder="Пароль"
+        />
       </Form.Item>
 
       <Form.Item
@@ -84,26 +151,20 @@ export function RegistrationForm({ changeForm, succ }) {
           }),
         ]}
       >
-        <Input
+        <StyledInput
           prefix={<LockOutlined />}
           type="password"
           placeholder="Повторите пароль"
         />
       </Form.Item>
 
-      <Form.Item>
-        <Button block type="primary" htmlType="submit">
-          Зарегистрироваться
-        </Button>
-        или{" "}
-        <button
-          onClick={() => {
-            changeForm(false);
-          }}
-        >
-          Вернуться к окну входа
-        </button>
+      <Form.Item className="submit-button">
+        <StyledButton htmlType="submit">Зарегистрироваться</StyledButton>
       </Form.Item>
-    </Form>
+    </StyledForm>
   );
 }
+
+RegistrationForm.propTypes = {
+  succ: PropTypes.func,
+};
