@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Filter, ProductsSearch } from "./components";
 import { url } from "../../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,15 +47,14 @@ export default function MainPage() {
 
   const filterSlice = useSelector((state) => state.filterStore.filterState);
   const inputSlice = useSelector((state) => state.inputStore.inputStore);
-  console.log(inputSlice);
 
   function handleClick() {
     const newUrl = new URL(url);
     if (inputSlice !== "") {
       newUrl.searchParams.set("search", inputSlice);
     }
-    if (filterSlice.ordering) {
-      newUrl.searchParams.set("ordering", filterSlice.ordering);
+    if (filterSlice) {
+      newUrl.searchParams.set("ordering", filterSlice);
     }
 
     const newUrlString = newUrl.toString();
@@ -65,6 +64,21 @@ export default function MainPage() {
       dispatch(resetResponse());
     }
   }
+
+  const handleChange = (newFilter) => {
+    const newUrl = new URL(url);
+    if (inputSlice !== "") {
+      newUrl.searchParams.set("search", inputSlice);
+    }
+    if (newFilter) {
+      newUrl.searchParams.set("ordering", newFilter);
+    }
+
+    const newUrlString = newUrl.toString();
+    setCurrentURL(newUrlString);
+    dispatch(resetPage());
+    dispatch(resetResponse());
+  };
 
   return (
     <UrlSetContext.Provider value={setCurrentURL}>
@@ -78,12 +92,8 @@ export default function MainPage() {
             Поиск
           </StyledButton>
         </InputContainer>
-        <Filter disabled={checkFetch} onClick={handleClick} />
-        <ProductsSearch
-          url={currentURL}
-          setUrl={setCurrentURL}
-          setFetch={setCheckFetch}
-        />
+        <Filter disabled={checkFetch} onClick={handleChange} />
+        <ProductsSearch url={currentURL} setFetch={setCheckFetch} />
       </StyledMain>
     </UrlSetContext.Provider>
   );

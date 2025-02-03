@@ -2,7 +2,7 @@ import { Switch } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { changeFilter } from "../../../features/filterStore";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 const SwitchContainer = styled.div`
   display: flex;
@@ -26,40 +26,31 @@ export function Filter({ disabled, onClick }) {
   const dispatch = useDispatch();
   const filterSlice = useSelector((state) => state.filterStore.filterState);
 
-  const onChangeNew = () => {
-    if (filterSlice.ordering === "-year") {
+  function filter(state) {
+    if (filterSlice === state) {
       dispatch(changeFilter(undefined));
     } else {
-      dispatch(changeFilter("-year"));
+      dispatch(changeFilter(state));
     }
-  };
-  const onChangeOld = () => {
-    if (filterSlice.ordering === "year") {
-      dispatch(changeFilter(undefined));
-    } else {
-      dispatch(changeFilter("year"));
-    }
-  };
 
-  useEffect(() => {
-    onClick();
-  }, [filterSlice.ordering]);
+    onClick(filterSlice === state ? undefined : state);
+  }
 
   return (
     <Container>
       <SwitchContainer>
         <SwitchTitle>Сначала старые:</SwitchTitle>
         <StyledSwitch
-          checked={!!(filterSlice.ordering === "year")}
-          onChange={onChangeOld}
+          checked={!!(filterSlice === "year")}
+          onChange={() => filter("year")}
           disabled={disabled}
         />
       </SwitchContainer>
       <SwitchContainer>
         <SwitchTitle>Сначала новые:</SwitchTitle>
         <StyledSwitch
-          checked={!!(filterSlice.ordering === "-year")}
-          onChange={onChangeNew}
+          checked={!!(filterSlice === "-year")}
+          onChange={() => filter("-year")}
           disabled={disabled}
         />
       </SwitchContainer>
