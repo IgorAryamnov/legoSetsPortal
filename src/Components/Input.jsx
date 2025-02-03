@@ -17,22 +17,15 @@ const StyledInput = styled.input`
   }
 `;
 
-export function Input({ value, changeValue }) {
-  function HandleChange(e) {
-    changeValue(e.target.value);
+export function Input({ value, onChangeValue }) {
+  function handleChange(e) {
+    onChangeValue(e.target.value);
   }
 
-  return (
-    <StyledInput
-      value={value.value}
-      onChange={(e) => {
-        HandleChange(e);
-      }}
-    />
-  );
+  return <StyledInput value={value.value} onChange={handleChange} />;
 }
 
 Input.propTypes = {
   value: PropTypes.string,
-  changeValue: PropTypes.func,
+  onChangeValue: PropTypes.func.isRequired,
 };

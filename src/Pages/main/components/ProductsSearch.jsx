@@ -1,11 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useGetProductsQuery } from "../features/baseApi";
-import { addPageWithStructures } from "../features/serverResponse";
+import { useGetProductsQuery } from "../../../features/baseApi";
+import { addPageWithStructures } from "../../../features/serverResponse";
 import { useEffect } from "react";
 import { ProductsList } from "./ProductsList";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+import { LoadingSkeletonView } from "./LoadingSkeletonView";
 
-export function ProductsSearch({ url }) {
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export function ProductsSearch({ url, setFetch }) {
   const dispatch = useDispatch();
 
   const pageSlice = useSelector((state) => state.page.page);
@@ -20,22 +28,24 @@ export function ProductsSearch({ url }) {
       dispatch(addPageWithStructures({ page: pageSlice, data: data }));
     }
   }, [data]);
+  useEffect(() => {
+    setFetch(isFetching);
+  }, [isFetching]);
 
   return (
-    <div>
+    <Container>
       {error ? (
         <p style={{ color: "var(--green)" }}>Oh no, there was an error</p>
       ) : isFetching ? (
-        <p style={{ color: "var(--green)" }}>Loading...</p>
+        <LoadingSkeletonView />
       ) : (
-        <>
-          <ProductsList />
-        </>
+        <ProductsList />
       )}
-    </div>
+    </Container>
   );
 }
 
 ProductsSearch.propTypes = {
   url: PropTypes.string,
+  setFetch: PropTypes.func,
 };

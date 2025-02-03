@@ -70,9 +70,11 @@ const UserLogOutButton = styled.button`
 `;
 
 export function Navbar() {
-  let loginSlice = useSelector((state) => state.log.loginState);
+  const loginSlice = useSelector((state) => state.log.loginState);
+
   const dispatch = useDispatch();
-  function HandleClick() {
+
+  function handleClick() {
     dispatch(logOut());
   }
 
@@ -95,7 +97,7 @@ export function Navbar() {
               <UserName>{loginSlice.user}</UserName>
               <UserLogOutButton
                 onClick={() => {
-                  HandleClick();
+                  handleClick();
                 }}
               >
                 Выйти

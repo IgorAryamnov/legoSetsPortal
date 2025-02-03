@@ -1,14 +1,25 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useGetFavoriteProductQuery } from "../features/baseApi";
+import { useGetFavoriteProductQuery } from "../../../features/baseApi";
 import { useEffect } from "react";
-import { addToFavoriteProducts } from "../features/favoriteFullInformation";
+import { addToFavoriteProducts } from "../../../features/favoriteFullInformation";
 import { FavoriteProduct } from "./FavoriteProduct";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { ProductSkeletonView } from "../../../Components/ProductSkeletonView";
 
 const Message = styled.p`
   color: var(--green);
 `;
+const style = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  border: "2px solid var(--green)",
+  borderRadius: "30px",
+  width: "100%",
+  marginBottom: "20px",
+};
+
 export function FavoriteProductSearch({ id, user }) {
   const dispatch = useDispatch();
 
@@ -48,7 +59,7 @@ export function FavoriteProductSearch({ id, user }) {
       {error ? (
         <Message>Oh no, there was an error</Message>
       ) : isFetching ? (
-        <Message>Loading...</Message>
+        <ProductSkeletonView style={style} />
       ) : (
         <FavoriteProduct
           data={{ user: user, product: data || dataFromRedux }}

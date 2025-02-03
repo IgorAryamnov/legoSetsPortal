@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { deleteFromFavorite } from "../features/favoriteStore";
-import { deleteFromFavoriteProducts } from "../features/favoriteFullInformation";
+import { deleteFromFavorite } from "../../../features/favoriteStore";
+import { deleteFromFavoriteProducts } from "../../../features/favoriteFullInformation";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 

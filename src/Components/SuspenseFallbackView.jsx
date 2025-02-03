@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 90vh;
 `;
 
-export function SuspenseFallback() {
+export function SuspenseFallbackView() {
   return (
     <Container>
       <Mosaic color="var(--green)" size="medium" text="" textColor="" />

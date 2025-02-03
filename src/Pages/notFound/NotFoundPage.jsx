@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LogoWithLink } from "../Components";
+import { LogoWithLinkView } from "../../Components";
 
 const Container = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ const Container = styled.div`
 export default function NotFoundPage() {
   return (
     <Container>
-      <LogoWithLink />
+      <LogoWithLinkView />
       <h1 style={{ color: "var(--green)" }}>Увы!</h1>
       <p style={{ color: "var(--green)" }}>Здесь ничего нет: ошибка 404!</p>
     </Container>

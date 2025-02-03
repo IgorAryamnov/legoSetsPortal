@@ -1,10 +1,10 @@
 import { createContext, useState } from "react";
-import { ProductsSearch } from "../Components/ProductsSearch";
-import { url } from "../utils/constants";
-import { useDispatch } from "react-redux";
-import { resetPage } from "../features/pageCounter";
-import { Input } from "../Components";
-import { resetResponse } from "../features/serverResponse";
+import { Filter, ProductsSearch } from "./components";
+import { url } from "../../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { resetPage } from "../../features/pageCounter";
+import { Input } from "../../Components";
+import { resetResponse } from "../../features/serverResponse";
 import styled from "styled-components";
 
 const StyledMain = styled.div`
@@ -12,7 +12,7 @@ const StyledMain = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1120px;
   width: 100%;
   margin: auto;
 `;
@@ -41,19 +41,24 @@ export const UrlSetContext = createContext();
 export default function MainPage() {
   const [currentURL, setCurrentURL] = useState("");
   const [mainInput, setMainInput] = useState("");
+  const [checkFetch, setCheckFetch] = useState(false);
 
   const dispatch = useDispatch();
 
-  function HandleClick() {
-    if (mainInput !== "") {
-      let newUrl = new URL(url);
-      newUrl.searchParams.set("search", mainInput);
+  const filterSlice = useSelector((state) => state.filterStore.filterState);
 
-      setCurrentURL(newUrl.toString());
-      dispatch(resetPage());
-      dispatch(resetResponse());
-    } else {
-      setCurrentURL(url);
+  function handleClick() {
+    const newUrl = new URL(url);
+    if (mainInput !== "") {
+      newUrl.searchParams.set("search", mainInput);
+    }
+    if (filterSlice.ordering) {
+      newUrl.searchParams.set("ordering", filterSlice.ordering);
+    }
+
+    const newUrlString = newUrl.toString();
+    if (newUrlString !== currentURL) {
+      setCurrentURL(newUrlString);
       dispatch(resetPage());
       dispatch(resetResponse());
     }
@@ -63,10 +68,17 @@ export default function MainPage() {
     <UrlSetContext.Provider value={setCurrentURL}>
       <StyledMain>
         <InputContainer>
-          <Input value={mainInput} changeValue={setMainInput} />
-          <StyledButton onClick={HandleClick}>Поиск</StyledButton>
+          <Input value={mainInput} onChangeValue={setMainInput} />
+          <StyledButton onClick={handleClick} disabled={checkFetch}>
+            Поиск
+          </StyledButton>
         </InputContainer>
-        <ProductsSearch url={currentURL} setUrl={setCurrentURL} />
+        <Filter disabled={checkFetch} onClick={handleClick} />
+        <ProductsSearch
+          url={currentURL}
+          setUrl={setCurrentURL}
+          setFetch={setCheckFetch}
+        />
       </StyledMain>
     </UrlSetContext.Provider>
   );

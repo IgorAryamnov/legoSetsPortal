@@ -3,7 +3,7 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logIn } from "../features/loginState";
+import { logIn } from "../../../features/loginState";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 

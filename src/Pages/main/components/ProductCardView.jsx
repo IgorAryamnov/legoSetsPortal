@@ -13,15 +13,17 @@ const StyledCard = styled(Card)`
     display: flex;
     justify-content: center;
   }
+
   .ant-card-body {
     border-top: 2px solid var(--green);
   }
+
   .ant-card-meta-title {
     color: var(--orange);
   }
 `;
 
-export function ProductCard({ data }) {
+export function ProductCardView({ data }) {
   return (
     <StyledCard
       cover={
@@ -38,6 +40,6 @@ export function ProductCard({ data }) {
   );
 }
 
-ProductCard.propTypes = {
+ProductCardView.propTypes = {
   data: PropTypes.object,
 };
