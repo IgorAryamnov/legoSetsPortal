@@ -6,6 +6,7 @@ import favoriteReducer from "../features/favoriteStore";
 import favoritePageReducer from "../features/favoritePageCounter";
 import singleStoreReducer from "../features/singleProductStore";
 import favoriteProductsReducer from "../features/favoriteFullInformation";
+import filterReducer from "../features/filterStore";
 import { baseApi } from "../features/baseApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { loggerMiddleware } from "./logger";
@@ -19,6 +20,7 @@ export const store = configureStore({
     favorite: favoriteReducer,
     favoriteProducts: favoriteProductsReducer,
     singleStore: singleStoreReducer,
+    filterStore: filterReducer,
     [baseApi.reducerPath]: baseApi.reducer,
   },
 

@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-
-import { ProductPageData } from "../Components";
-import { useGetFavoriteProductQuery } from "../features/baseApi";
-import { addToSingleStore } from "../features/singleProductStore";
+import { useGetFavoriteProductQuery } from "../../features/baseApi";
+import { addToSingleStore } from "../../features/singleProductStore";
+import { ProductPageData } from "../../Components";
 
 export default function ProductPage() {
   let { page, id } = useParams();

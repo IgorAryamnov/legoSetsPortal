@@ -1,18 +1,24 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Navbar, SuspenseFallback } from "./Components";
+import { Navbar, SuspenseFallbackView } from "./Components";
 import "@ant-design/v5-patch-for-react-19";
 import { lazy, Suspense, useEffect } from "react";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import { RegistrationPage } from "./Pages";
 
-const MainPage = lazy(() => import("./Pages/MainPage"));
-const AuthorizationPage = lazy(() => import("./Pages/AuthorizationPage"));
-const FavoritePage = lazy(() => import("./Pages/FavoritePage"));
-const FavoriteProductPage = lazy(() => import("./Pages/FavoriteProductPage"));
-const NotFoundPage = lazy(() => import("./Pages/NotFoundPage"));
-const ProductPage = lazy(() => import("./Pages/ProductPage"));
+const MainPage = lazy(() => import("./Pages/main/MainPage"));
+const AuthorizationPage = lazy(() =>
+  import("./Pages/authorization/AuthorizationPage")
+);
+const FavoritePage = lazy(() => import("./Pages/favorite/FavoritePage"));
+const FavoriteProductPage = lazy(() =>
+  import("./Pages/favoriteProduct/FavoriteProductPage")
+);
+const NotFoundPage = lazy(() => import("./Pages/notFound/NotFoundPage"));
+const ProductPage = lazy(() => import("./Pages/product/ProductPage"));
+const RegistrationPage = lazy(() =>
+  import("./Pages/registration/RegistrationPage")
+);
 
 function App() {
   useEffect(() => {
@@ -29,7 +35,7 @@ function App() {
             <Route
               index
               element={
-                <Suspense fallback={<SuspenseFallback />}>
+                <Suspense fallback={<SuspenseFallbackView />}>
                   <MainPage />
                 </Suspense>
               }
@@ -37,7 +43,7 @@ function App() {
             <Route
               path="/favorite"
               element={
-                <Suspense fallback={<SuspenseFallback />}>
+                <Suspense fallback={<SuspenseFallbackView />}>
                   <FavoritePage />
                 </Suspense>
               }
@@ -45,7 +51,7 @@ function App() {
             <Route
               path="/favorite/:id"
               element={
-                <Suspense fallback={<SuspenseFallback />}>
+                <Suspense fallback={<SuspenseFallbackView />}>
                   <FavoriteProductPage />
                 </Suspense>
               }
@@ -53,7 +59,7 @@ function App() {
             <Route
               path="/:page/:id"
               element={
-                <Suspense fallback={<SuspenseFallback />}>
+                <Suspense fallback={<SuspenseFallbackView />}>
                   <ProductPage />
                 </Suspense>
               }
@@ -63,7 +69,7 @@ function App() {
             exact
             path="authorization"
             element={
-              <Suspense fallback={<SuspenseFallback />}>
+              <Suspense fallback={<SuspenseFallbackView />}>
                 <AuthorizationPage />
               </Suspense>
             }
@@ -72,7 +78,7 @@ function App() {
             exact
             path="authorization/registration"
             element={
-              <Suspense fallback={<SuspenseFallback />}>
+              <Suspense fallback={<SuspenseFallbackView />}>
                 <RegistrationPage />
               </Suspense>
             }
@@ -80,7 +86,7 @@ function App() {
           <Route
             path="*"
             element={
-              <Suspense fallback={<SuspenseFallback />}>
+              <Suspense fallback={<SuspenseFallbackView />}>
                 <NotFoundPage />
               </Suspense>
             }

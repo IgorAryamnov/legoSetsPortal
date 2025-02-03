@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { ProductPageData } from "../Components";
+import { ProductPageData } from "../../Components";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useLayoutEffect } from "react";
-import { useGetFavoriteProductQuery } from "../features/baseApi";
-import { addToSingleStore } from "../features/singleProductStore";
+import { useGetFavoriteProductQuery } from "../../features/baseApi";
+import { addToSingleStore } from "../../features/singleProductStore";
 
 export default function FavoriteProductPage() {
   const { id } = useParams();

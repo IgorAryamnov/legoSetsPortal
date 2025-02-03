@@ -3,7 +3,7 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { useDebounce } from "../hooks/useDebounce";
+import { useDebounce } from "../../../hooks/useDebounce";
 
 const StyledForm = styled(Form)`
   width: 350px;
@@ -88,6 +88,13 @@ export function RegistrationForm({ succ }) {
           },
           () => ({
             validator(_, value) {
+              if (/[^a-zA-Z0-9]/.test(value)) {
+                return Promise.reject(
+                  new Error(
+                    "Пожалуйста, используйте только английские буквы и цифры!"
+                  )
+                );
+              }
               if (!value || value.length > 4) {
                 if (validator) {
                   return Promise.reject(

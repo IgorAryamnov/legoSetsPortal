@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { FavoriteProductSearch } from "./FavoriteProductSearch";
-import { Paginator } from "./Paginator";
+import { Paginator } from "../../../Components/Paginator";
 import { useDispatch } from "react-redux";
 import {
   decreaseFavoritePage,
   increaseFavoritePage,
-} from "../features/favoritePageCounter";
+} from "../../../features/favoritePageCounter";
 import PropTypes from "prop-types";
 
 export function FavoriteList({ data }) {

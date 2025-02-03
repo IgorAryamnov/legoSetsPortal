@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { LogoWithLinkView } from "../../../Components";
 
 const Container = styled.div`
   display: flex;
@@ -41,10 +42,10 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export function SuccessFullWindow() {
+export function SuccessFulWindowView() {
   return (
     <Container>
-      <Link to="/">Логотип</Link>
+      <LogoWithLinkView />
       <MessageContainer>
         <MessageTitle>Поздравляем!</MessageTitle>
         <p

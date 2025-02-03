@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { FavoriteList } from "../Components";
 import styled from "styled-components";
+import { FavoriteList } from "./components";
 
 const Container = styled.div`
   max-width: 1200px;

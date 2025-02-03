@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { LogoWithLinkView } from "../../Components";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { LogoWithLink, RegistrationForm } from "../Components";
-import { SuccessFullWindow } from "../Components/SuccessfullWindow";
+import { useSelector } from "react-redux";
+import { LogInForm } from "./components";
 
 const FormContainer = styled.div`
   display: flex;
@@ -40,9 +40,7 @@ const TitleContainer = styled.div`
   border-radius: 15px 15px 0px 0px;
 `;
 
-export function RegistrationPage() {
-  const [success, setSuccess] = useState(false);
-
+export default function AuthorizationPage() {
   let navigate = useNavigate();
   let logSlice = useSelector((state) => state.log.loginState);
 
@@ -53,24 +51,19 @@ export function RegistrationPage() {
   }, [logSlice.loggedIn, navigate]);
 
   return (
-    <>
-      {success ? (
-        <SuccessFullWindow />
-      ) : (
-        <FormContainer>
-          <div>
-            <LogoContainer>
-              <LogoWithLink />
-            </LogoContainer>
-            <FormWithOutLogo>
-              <TitleContainer>
-                <h1>Регистрация</h1>
-              </TitleContainer>
-              <RegistrationForm succ={setSuccess} />
-            </FormWithOutLogo>
-          </div>
-        </FormContainer>
-      )}
-    </>
+    <FormContainer>
+      <div>
+        <LogoContainer>
+          <LogoWithLinkView />
+        </LogoContainer>
+
+        <FormWithOutLogo>
+          <TitleContainer>
+            <h1>Вход</h1>
+          </TitleContainer>
+          <LogInForm />
+        </FormWithOutLogo>
+      </div>
+    </FormContainer>
   );
 }
