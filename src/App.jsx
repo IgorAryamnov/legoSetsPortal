@@ -29,7 +29,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={"legoSetsPortal"}>
         <Routes>
           <Route path="/" element={<Navbar />}>
             <Route
