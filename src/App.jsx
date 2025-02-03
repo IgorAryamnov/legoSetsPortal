@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Navbar, SuspenseFallbackView } from "./Components";
 import "@ant-design/v5-patch-for-react-19";
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter basename={"legoSetsPortal"}>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Navbar />}>
             <Route
@@ -92,7 +92,7 @@ function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 }
