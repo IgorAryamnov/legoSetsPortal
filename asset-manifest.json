@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/legoSetsPortal/static/css/main.5a21c2ba.css",
+    "main.js": "/legoSetsPortal/static/js/main.a151fa21.js",
+    "static/js/162.88f0774a.chunk.js": "/legoSetsPortal/static/js/162.88f0774a.chunk.js",
+    "static/js/406.c0636ced.chunk.js": "/legoSetsPortal/static/js/406.c0636ced.chunk.js",
+    "static/js/298.96b45b7e.chunk.js": "/legoSetsPortal/static/js/298.96b45b7e.chunk.js",
+    "static/js/957.5095c0c9.chunk.js": "/legoSetsPortal/static/js/957.5095c0c9.chunk.js",
+    "static/js/133.91fc0340.chunk.js": "/legoSetsPortal/static/js/133.91fc0340.chunk.js",
+    "static/js/589.66c818c6.chunk.js": "/legoSetsPortal/static/js/589.66c818c6.chunk.js",
+    "static/js/420.88f937f0.chunk.js": "/legoSetsPortal/static/js/420.88f937f0.chunk.js",
+    "static/js/929.41d144c9.chunk.js": "/legoSetsPortal/static/js/929.41d144c9.chunk.js",
+    "static/js/798.b62e385c.chunk.js": "/legoSetsPortal/static/js/798.b62e385c.chunk.js",
+    "static/js/801.888e70a3.chunk.js": "/legoSetsPortal/static/js/801.888e70a3.chunk.js",
+    "static/media/logo.png": "/legoSetsPortal/static/media/logo.445d0d2226de61ff6bb9.png",
+    "index.html": "/legoSetsPortal/index.html",
+    "main.5a21c2ba.css.map": "/legoSetsPortal/static/css/main.5a21c2ba.css.map",
+    "main.a151fa21.js.map": "/legoSetsPortal/static/js/main.a151fa21.js.map",
+    "162.88f0774a.chunk.js.map": "/legoSetsPortal/static/js/162.88f0774a.chunk.js.map",
+    "406.c0636ced.chunk.js.map": "/legoSetsPortal/static/js/406.c0636ced.chunk.js.map",
+    "298.96b45b7e.chunk.js.map": "/legoSetsPortal/static/js/298.96b45b7e.chunk.js.map",
+    "957.5095c0c9.chunk.js.map": "/legoSetsPortal/static/js/957.5095c0c9.chunk.js.map",
+    "133.91fc0340.chunk.js.map": "/legoSetsPortal/static/js/133.91fc0340.chunk.js.map",
+    "589.66c818c6.chunk.js.map": "/legoSetsPortal/static/js/589.66c818c6.chunk.js.map",
+    "420.88f937f0.chunk.js.map": "/legoSetsPortal/static/js/420.88f937f0.chunk.js.map",
+    "929.41d144c9.chunk.js.map": "/legoSetsPortal/static/js/929.41d144c9.chunk.js.map",
+    "798.b62e385c.chunk.js.map": "/legoSetsPortal/static/js/798.b62e385c.chunk.js.map",
+    "801.888e70a3.chunk.js.map": "/legoSetsPortal/static/js/801.888e70a3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a21c2ba.css",
+    "static/js/main.a151fa21.js"
+  ]
+}
