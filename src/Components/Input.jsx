@@ -18,11 +18,7 @@ const StyledInput = styled.input`
 `;
 
 export function Input({ value, onChangeValue }) {
-  function handleChange(e) {
-    onChangeValue(e.target.value);
-  }
-
-  return <StyledInput value={value.value} onChange={handleChange} />;
+  return <StyledInput value={value} onChange={onChangeValue} />;
 }
 
 Input.propTypes = {

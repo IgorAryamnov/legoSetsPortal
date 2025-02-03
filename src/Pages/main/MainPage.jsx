@@ -6,6 +6,7 @@ import { resetPage } from "../../features/pageCounter";
 import { Input } from "../../Components";
 import { resetResponse } from "../../features/serverResponse";
 import styled from "styled-components";
+import { changeInput } from "../../features/inputStore";
 
 const StyledMain = styled.div`
   display: flex;
@@ -40,17 +41,18 @@ export const UrlSetContext = createContext();
 
 export default function MainPage() {
   const [currentURL, setCurrentURL] = useState("");
-  const [mainInput, setMainInput] = useState("");
   const [checkFetch, setCheckFetch] = useState(false);
 
   const dispatch = useDispatch();
 
   const filterSlice = useSelector((state) => state.filterStore.filterState);
+  const inputSlice = useSelector((state) => state.inputStore.inputStore);
+  console.log(inputSlice);
 
   function handleClick() {
     const newUrl = new URL(url);
-    if (mainInput !== "") {
-      newUrl.searchParams.set("search", mainInput);
+    if (inputSlice !== "") {
+      newUrl.searchParams.set("search", inputSlice);
     }
     if (filterSlice.ordering) {
       newUrl.searchParams.set("ordering", filterSlice.ordering);
@@ -68,7 +70,10 @@ export default function MainPage() {
     <UrlSetContext.Provider value={setCurrentURL}>
       <StyledMain>
         <InputContainer>
-          <Input value={mainInput} onChangeValue={setMainInput} />
+          <Input
+            value={inputSlice}
+            onChangeValue={(e) => dispatch(changeInput(e.target.value))}
+          />
           <StyledButton onClick={handleClick} disabled={checkFetch}>
             Поиск
           </StyledButton>
