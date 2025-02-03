@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/legoSetsPortal/static/css/main.5a21c2ba.css",
-    "main.js": "/legoSetsPortal/static/js/main.bf9fc847.js",
-    "static/js/162.9ea828a3.chunk.js": "/legoSetsPortal/static/js/162.9ea828a3.chunk.js",
+    "main.js": "/legoSetsPortal/static/js/main.a2c9e3b1.js",
+    "static/js/162.15e53a4d.chunk.js": "/legoSetsPortal/static/js/162.15e53a4d.chunk.js",
     "static/js/406.c0636ced.chunk.js": "/legoSetsPortal/static/js/406.c0636ced.chunk.js",
     "static/js/298.96b45b7e.chunk.js": "/legoSetsPortal/static/js/298.96b45b7e.chunk.js",
     "static/js/957.5095c0c9.chunk.js": "/legoSetsPortal/static/js/957.5095c0c9.chunk.js",
@@ -15,8 +15,8 @@
     "static/media/logo.png": "/legoSetsPortal/static/media/logo.445d0d2226de61ff6bb9.png",
     "index.html": "/legoSetsPortal/index.html",
     "main.5a21c2ba.css.map": "/legoSetsPortal/static/css/main.5a21c2ba.css.map",
-    "main.bf9fc847.js.map": "/legoSetsPortal/static/js/main.bf9fc847.js.map",
-    "162.9ea828a3.chunk.js.map": "/legoSetsPortal/static/js/162.9ea828a3.chunk.js.map",
+    "main.a2c9e3b1.js.map": "/legoSetsPortal/static/js/main.a2c9e3b1.js.map",
+    "162.15e53a4d.chunk.js.map": "/legoSetsPortal/static/js/162.15e53a4d.chunk.js.map",
     "406.c0636ced.chunk.js.map": "/legoSetsPortal/static/js/406.c0636ced.chunk.js.map",
     "298.96b45b7e.chunk.js.map": "/legoSetsPortal/static/js/298.96b45b7e.chunk.js.map",
     "957.5095c0c9.chunk.js.map": "/legoSetsPortal/static/js/957.5095c0c9.chunk.js.map",
@@ -29,6 +29,6 @@
   },
   "entrypoints": [
     "static/css/main.5a21c2ba.css",
-    "static/js/main.bf9fc847.js"
+    "static/js/main.a2c9e3b1.js"
   ]
 }
